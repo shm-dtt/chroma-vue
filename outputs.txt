@@ -1,3 +1,4 @@
+932 MB
 (venv) shm-dtt@LenovoFlex5:~/chroma-vue$ python chroma-vue.py La.La.Land.2016.720p.BluRay.x264-\[YTS.AG\].mp4
 [19:28:20] INFO: Video : La.La.Land.2016.720p.BluRay.x264-[YTS.AG].mp4
 [19:28:20] INFO: Width: 3000
@@ -13,6 +14,7 @@ Processing frames: 183859frame [06:27, 474.67frame/s]
 
 
 
+1.93 GB
 (venv) shm-dtt@LenovoFlex5:~/chroma-vue$ python chroma-vue.py La.La.Land.2016.1080p.BluRay.x264-\[YTS.AG\].mp4
 [19:42:01] INFO: Video : La.La.Land.2016.1080p.BluRay.x264-[YTS.AG].mp4
 [19:42:01] INFO: Width: 3000
@@ -28,6 +30,7 @@ Processing frames: 183859frame [09:01, 339.29frame/s]
 
 
 
+5.70 GB
 (venv) shm-dtt@LenovoFlex5:~/chroma-vue$ python chroma-vue.py La.La.Land.2016.2160p.4K.BluRay.x265.10bit.AAC5.1-\[YTS.MX\].mkv
 [19:56:47] INFO: Video : La.La.Land.2016.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv
 [19:56:47] INFO: Width: 3000
