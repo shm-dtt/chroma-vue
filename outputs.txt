@@ -1,0 +1,42 @@
+(venv) shm-dtt@LenovoFlex5:~/chroma-vue$ python chroma-vue.py La.La.Land.2016.720p.BluRay.x264-\[YTS.AG\].mp4
+[19:28:20] INFO: Video : La.La.Land.2016.720p.BluRay.x264-[YTS.AG].mp4
+[19:28:20] INFO: Width: 3000
+[19:28:20] INFO: Height: 800
+[19:28:20] INFO: Probing video: La.La.Land.2016.720p.BluRay.x264-[YTS.AG].mp4
+[19:28:20] INFO: Video duration: 7668.13s, FPS: 23.97598627787307, Total frames: 183850
+[19:28:20] INFO: Using 8 workers
+Processing frames: 183859frame [06:27, 474.67frame/s]                                                                                               
+[19:34:47] INFO: Total extracted colors: 183859
+[19:34:47] INFO: Averaging to final width...
+[19:34:47] INFO: Creating image...
+[19:34:47] INFO: Saved timeline image to: La.La.Land.2016.720p.BluRay.x264-[YTS.AG]_3000_800.png
+
+
+
+(venv) shm-dtt@LenovoFlex5:~/chroma-vue$ python chroma-vue.py La.La.Land.2016.1080p.BluRay.x264-\[YTS.AG\].mp4
+[19:42:01] INFO: Video : La.La.Land.2016.1080p.BluRay.x264-[YTS.AG].mp4
+[19:42:01] INFO: Width: 3000
+[19:42:01] INFO: Height: 800
+[19:42:01] INFO: Probing video: La.La.Land.2016.1080p.BluRay.x264-[YTS.AG].mp4
+[19:42:02] INFO: Video duration: 7668.13s, FPS: 23.97598627787307, Total frames: 183850
+[19:42:02] INFO: Using 8 workers
+Processing frames: 183859frame [09:01, 339.29frame/s]                                                                                         
+[19:51:04] INFO: Total extracted colors: 183859
+[19:51:04] INFO: Averaging to final width...
+[19:51:04] INFO: Creating image...
+[19:51:04] INFO: Saved timeline image to: La.La.Land.2016.1080p.BluRay.x264-[YTS.AG]_3000_800.png
+
+
+
+(venv) shm-dtt@LenovoFlex5:~/chroma-vue$ python chroma-vue.py La.La.Land.2016.2160p.4K.BluRay.x265.10bit.AAC5.1-\[YTS.MX\].mkv
+[19:56:47] INFO: Video : La.La.Land.2016.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv
+[19:56:47] INFO: Width: 3000
+[19:56:47] INFO: Height: 800
+[19:56:47] INFO: Probing video: La.La.Land.2016.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv
+[19:56:47] INFO: Video duration: 7675.92s, FPS: 23.976023976023978, Total frames: 184038
+[19:56:47] INFO: Using 8 workers
+Processing frames: 184042frame [45:59, 66.69frame/s]                                                                                                                        
+[20:42:47] INFO: Total extracted colors: 184042
+[20:42:47] INFO: Averaging to final width...
+[20:42:47] INFO: Creating image...
+[20:42:47] INFO: Saved timeline image to: La.La.Land.2016.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX]_3000_800.png
