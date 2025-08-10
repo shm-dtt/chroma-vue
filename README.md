@@ -79,8 +79,8 @@ Tests performed on WSL2 with the following specifications:
 - **Workers**: 8 processes
 - **Swap**: 2048MB
 
-| Resolution | File Size | Duration | FPS | Total Frames | Processing Time | Speed (fps) |
-|------------|-----------|----------|-----|--------------|----------------|-------------|
+| Resolution | File Size | File Duration | FPS | Total Frames | Processing Time(mm:ss) | Speed (fps) |
+|------------|-----------|----------|-----|--------------|----------|-------------|
 | 720p       | 932 MB    | 7668.13s | 23.98 | 183,850      | 6:27           | 474.67      |
 | 1080p      | 1.93 GB   | 7668.13s | 23.98 | 183,850      | 9:01           | 339.29      |
 | 4K (2160p) | 5.70 GB   | 7675.92s | 23.98 | 184,038      | 45:59          | 66.69       |
