@@ -2,6 +2,12 @@
 
 A fast, multiprocessed video color timeline generator that extracts the average color from each frame of a video and creates a beautiful color timeline visualization.
 
+## Sample Output
+
+I used this [Youtube video](https://www.youtube.com/watch?v=WO2b03Zdu4Q) for a sample testing. The sample output image shown in the video is available at `/sample/sample.png` in this repository.
+
+Also, there is a sample of the movie "La La Land" as well. (`/sample/La.La.Land.2016.720p_3000_800.png`)
+
 ## Features
 
 - **High Performance**: Utilizes multiprocessing to maximize CPU usage
@@ -117,11 +123,35 @@ Each column in the output image represents the average color of frames from that
 
 **Slow processing**: Try adjusting the worker count or check if your storage is the bottleneck
 
+**Terminal doesn't show typing after running**: This was a known issue that has been fixed in the latest version. The problem was caused by FFmpeg/FFprobe interfering with terminal stdin. If you still experience this issue:
+1. The script now automatically restores terminal settings on exit
+2. If your terminal is still unresponsive, manually fix it with:
+   - Linux/macOS: Type `reset` or `stty sane` and press Enter
+   - Windows: Press Ctrl+C, type `cls` and press Enter
+
+**Terminal becomes unresponsive after running**: This was caused by improper multiprocessing cleanup and has been fixed. If you still experience this issue:
+1. Make sure you're using the updated version of the script
+2. Try reducing the number of workers with `--workers 4`
+3. On Windows, ensure you're running the script directly (not in some IDEs)
+
+**Script hangs on exit**: Press Ctrl+C to interrupt gracefully. The script now includes proper cleanup routines.
+
+**Process doesn't respond to Ctrl+C**: This should be fixed in the current version. If it persists, you may need to force-kill the process and restart your terminal.
+
 ## Dependencies
 
 - `numpy`: Numerical operations for color averaging
 - `Pillow`: Image creation and manipulation
 - `tqdm`: Progress bar display
+
+## Recent Updates
+
+### Version 1.1
+- **MAJOR FIX**: Resolved terminal input visibility issue (typing not showing after script execution)
+- Fixed FFmpeg/FFprobe stdin interference with terminal
+- Added automatic terminal state restoration on exit
+- Improved subprocess isolation to prevent terminal corruption
+- Enhanced cross-platform terminal handling
 
 ## License
 
