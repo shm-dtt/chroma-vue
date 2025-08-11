@@ -15,15 +15,164 @@ Also, there is a sample of the movie "La La Land" as well. (`/sample/La.La.Land.
 - **Customizable Output**: Configurable image dimensions
 - **Progress Tracking**: Real-time progress bar with frame processing rate
 - **Cross-Platform**: Works on Windows, macOS, and Linux
+- **Docker Support**: Run anywhere with Docker, no local dependencies required
 
-## Prerequisites
+## Quick Start with Docker (Recommended)
 
-### System Requirements
+The easiest way to use Chroma-Vue is with Docker. No need to install Python, FFmpeg, or manage dependencies!
+
+### Prerequisites for Docker
+- Docker installed on your system ([Get Docker](https://docs.docker.com/get-docker/))
+- Your video file accessible on your local machine
+
+### Docker Usage
+
+**Basic usage:**
+```bash
+docker run --rm -v /path/to/your/videos:/videos chromavue your_video.mp4
+```
+
+**With custom options:**
+```bash
+docker run --rm -v /path/to/your/videos:/videos chromavue your_video.mp4 --width 4000 --height 1000 --workers 8
+```
+
+#### Platform-Specific Examples
+
+**Windows Command Prompt:**
+```cmd
+# Basic usage
+docker run --rm -v C:\Users\YourName\Videos:/videos chromavue my_video.mp4
+
+# With custom options
+docker run --rm -v C:\Users\YourName\Videos:/videos chromavue my_video.mp4 --width 2000 --height 600
+
+# Using current directory (if video is in current folder)
+docker run --rm -v %cd%:/videos chromavue my_video.mp4
+```
+
+**Windows PowerShell:**
+```powershell
+# Basic usage
+docker run --rm -v C:\Users\YourName\Videos:/videos chromavue my_video.mp4
+
+# With custom options
+docker run --rm -v C:\Users\YourName\Videos:/videos chromavue "my video with spaces.mp4" --width 2000
+
+# Using current directory
+docker run --rm -v ${PWD}:/videos chromavue my_video.mp4
+```
+
+**macOS/Linux:**
+```bash
+# Basic usage
+docker run --rm -v ~/Videos:/videos chromavue my_video.mp4
+
+# With custom options
+docker run --rm -v ~/Videos:/videos chromavue my_video.mp4 --width 4000 --height 1000
+
+# Using current directory
+docker run --rm -v $(pwd):/videos chromavue my_video.mp4
+```
+
+## Common Docker Commands
+
+### Quick Reference
+
+**Process a video in current directory:**
+```bash
+# Linux/macOS
+docker run --rm -v $(pwd):/videos shmdtt/chroma-vue "your_video.mp4"
+
+# Windows Command Prompt  
+docker run --rm -v %cd%:/videos shmdtt/chroma-vue "your_video.mp4"
+
+# Windows PowerShell
+docker run --rm -v ${PWD}:/videos shmdtt/chroma-vue "your_video.mp4"
+```
+
+**Custom dimensions:**
+```bash
+# Linux/macOS
+docker run --rm -v $(pwd):/videos shmdtt/chroma-vue "your_video.mp4" --width 2000 --height 400
+
+# Windows Command Prompt
+docker run --rm -v %cd%:/videos shmdtt/chroma-vue "your_video.mp4" --width 2000 --height 400
+
+# Windows PowerShell  
+docker run --rm -v ${PWD}:/videos shmdtt/chroma-vue "your_video.mp4" --width 2000 --height 400
+```
+
+**Limit CPU usage (useful for large files):**
+```bash
+# Linux/macOS
+docker run --rm -v $(pwd):/videos shmdtt/chroma-vue "your_video.mp4" --workers 4
+
+# Windows Command Prompt
+docker run --rm -v %cd%:/videos shmdtt/chroma-vue "your_video.mp4" --workers 4
+
+# Windows PowerShell
+docker run --rm -v ${PWD}:/videos shmdtt/chroma-vue "your_video.mp4" --workers 4
+```
+
+# Building the Docker Image
+
+If you want to build the image yourself:
+git clone <repository-url>
+cd chroma-vue
+
+## Build the Docker image
+docker build -t chromavue .
+
+## Run with your video (Linux/macOS)
+docker run --rm -v $(pwd):/videos chromavue your_video.mp4
+
+## Run with your video (Windows Command Prompt)
+docker run --rm -v %cd%:/videos chromavue your_video.mp4
+
+## Run with your video (Windows PowerShell)
+docker run --rm -v ${PWD}:/videos chromavue your_video.mp4
+
+
+### Docker Volume Mounting
+
+The Docker container expects videos to be mounted to `/videos` inside the container. Here's how the volume mounting works:
+
+- **Host path**: The directory on your computer containing video files
+- **Container path**: Always `/videos`
+- **Syntax**: `-v /host/path:/videos`
+
+**Examples:**
+```bash
+# Linux/macOS: If your video is in /home/user/Downloads/
+docker run --rm -v /home/user/Downloads:/videos chromavue video.mp4
+
+# Windows Command Prompt: If your video is in C:\Users\John\Desktop\
+docker run --rm -v C:\Users\John\Desktop:/videos chromavue video.mp4
+
+# Windows PowerShell: Using current directory
+docker run --rm -v ${PWD}:/videos chromavue video.mp4
+
+# Process multiple videos with different settings
+docker run --rm -v ~/MyVideos:/videos chromavue video1.mp4 --width 2000
+docker run --rm -v ~/MyVideos:/videos chromavue video2.mp4 --height 600
+
+# Handle videos with spaces in filename (use quotes)
+docker run --rm -v "C:\My Videos":/videos chromavue "my video file.mp4"
+```
+
+## Local Installation (Alternative)
+
+If you prefer to run without Docker:
+
+### Prerequisites
+
+#### System Requirements
 - Python 3.6+
 - FFmpeg (must be installed and accessible from command line)
 - Sufficient RAM for your video file size
 
-### Installing FFmpeg
+#### Installing FFmpeg
 
 **Windows:**
 ```bash
@@ -44,7 +193,7 @@ sudo apt update
 sudo apt install ffmpeg
 ```
 
-## Installation
+### Installation Steps
 
 1. Clone or download this repository
 2. Create a virtual environment (recommended):
@@ -58,7 +207,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Usage
+### Local Usage
 
 Basic usage:
 ```bash
@@ -70,12 +219,19 @@ With custom options:
 python chroma-vue.py your_video.mp4 --width 4000 --height 1000 --workers 16
 ```
 
-### Command Line Arguments
+## Command Line Arguments
 
 - `video`: Path to the input video file (required)
 - `--width`: Final image width in pixels (default: 3000)
 - `--height`: Final image height in pixels (default: 800)
 - `--workers`: Number of worker processes (default: CPU count)
+
+### Docker-Specific Notes
+
+- The output image will be saved in the same directory as your input video
+- Container runs as non-root user for security
+- All processing happens inside the container - no temporary files on host
+- Container automatically cleans up after processing
 
 ## Performance Benchmarks
 
@@ -114,10 +270,55 @@ Each column in the output image represents the average color of frames from that
 2. **Memory**: Ensure you have enough RAM. Each worker processes a chunk of the video simultaneously
 3. **Storage**: Use fast storage (SSD) for better I/O performance
 4. **Video Format**: H.264 videos generally process faster than H.265/HEVC
+5. **Docker**: Docker adds minimal overhead but provides consistency across platforms
 
 ## Troubleshooting
 
-**"ffmpeg not found"**: Ensure FFmpeg is installed and in your system PATH
+### Docker Issues
+
+**"docker: command not found"**: Install Docker from [docker.com](https://docs.docker.com/get-docker/)
+
+**"permission denied"**: On Linux, you might need to add your user to the docker group:
+```bash
+sudo usermod -aG docker $USER
+# Log out and back in, or restart your session
+```
+
+**Volume mounting issues**: Ensure your path is absolute and the directory exists:
+```bash
+# Linux/macOS: Good - Absolute path
+docker run --rm -v /home/user/Videos:/videos chromavue video.mp4
+
+# Windows Command Prompt: Good - Absolute path
+docker run --rm -v C:\Users\YourName\Videos:/videos chromavue video.mp4
+
+# Windows PowerShell: Good - Absolute path  
+docker run --rm -v C:\Users\YourName\Videos:/videos chromavue video.mp4
+
+# Bad: Relative path (may not work consistently)
+docker run --rm -v ./Videos:/videos chromavue video.mp4
+```
+
+**Windows-specific path issues**: 
+- Use forward slashes in the container path: `/videos` (not `\videos`)
+- For paths with spaces, use quotes: `"C:\My Videos"`
+- Ensure Docker Desktop is running and has access to your drive
+
+**File not found in container**: Make sure your video file is in the mounted directory:
+```bash
+# List files in mounted directory (Linux/macOS)
+docker run --rm -v $(pwd):/videos --entrypoint ls chromavue -la /videos
+
+# List files in mounted directory (Windows Command Prompt)
+docker run --rm -v %cd%:/videos --entrypoint ls chromavue -la /videos
+
+# List files in mounted directory (Windows PowerShell)
+docker run --rm -v ${PWD}:/videos --entrypoint ls chromavue -la /videos
+```
+
+### General Issues
+
+**"ffmpeg not found"** (local installation): Ensure FFmpeg is installed and in your system PATH
 
 **"Out of memory"**: Reduce the number of workers or ensure you have sufficient RAM
 
@@ -129,22 +330,25 @@ Each column in the output image represents the average color of frames from that
    - Linux/macOS: Type `reset` or `stty sane` and press Enter
    - Windows: Press Ctrl+C, type `cls` and press Enter
 
-**Terminal becomes unresponsive after running**: This was caused by improper multiprocessing cleanup and has been fixed. If you still experience this issue:
-1. Make sure you're using the updated version of the script
-2. Try reducing the number of workers with `--workers 4`
-3. On Windows, ensure you're running the script directly (not in some IDEs)
-
-**Script hangs on exit**: Press Ctrl+C to interrupt gracefully. The script now includes proper cleanup routines.
-
-**Process doesn't respond to Ctrl+C**: This should be fixed in the current version. If it persists, you may need to force-kill the process and restart your terminal.
-
 ## Dependencies
 
+### Docker (Included in image)
+- Python 3.9
+- FFmpeg
+- All Python dependencies
+
+### Local Installation
 - `numpy`: Numerical operations for color averaging
 - `Pillow`: Image creation and manipulation
 - `tqdm`: Progress bar display
 
 ## Recent Updates
+
+### Version 1.2
+- **NEW**: Full Docker support with optimized container
+- Added non-root user for enhanced security
+- Improved cross-platform compatibility
+- Streamlined installation process
 
 ### Version 1.1
 - **MAJOR FIX**: Resolved terminal input visibility issue (typing not showing after script execution)
@@ -152,6 +356,14 @@ Each column in the output image represents the average color of frames from that
 - Added automatic terminal state restoration on exit
 - Improved subprocess isolation to prevent terminal corruption
 - Enhanced cross-platform terminal handling
+
+## Contributing
+
+Feel free to submit issues, feature requests, or pull requests. When reporting issues, please include:
+- Your operating system
+- Whether you're using Docker or local installation
+- Video file format and size
+- Error messages or unexpected behavior
 
 ## License
 
