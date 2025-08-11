@@ -25,16 +25,26 @@ The easiest way to use Chroma-Vue is with Docker. No need to install Python, FFm
 - Docker installed on your system ([Get Docker](https://docs.docker.com/get-docker/))
 - Your video file accessible on your local machine
 
+### Pull the Docker Image
+
+First, pull the pre-built image from Docker Hub:
+
+```bash
+docker pull shmdtt/chroma-vue
+```
+
+Alternatively, you can pull and run in one command (Docker will automatically pull if the image doesn't exist locally).
+
 ### Docker Usage
 
 **Basic usage:**
 ```bash
-docker run --rm -v /path/to/your/videos:/videos chromavue your_video.mp4
+docker run --rm -v /path/to/your/videos:/videos shmdtt/chroma-vue your_video.mp4
 ```
 
 **With custom options:**
 ```bash
-docker run --rm -v /path/to/your/videos:/videos chromavue your_video.mp4 --width 4000 --height 1000 --workers 8
+docker run --rm -v /path/to/your/videos:/videos shmdtt/chroma-vue your_video.mp4 --width 4000 --height 1000 --workers 8
 ```
 
 #### Platform-Specific Examples
@@ -42,37 +52,37 @@ docker run --rm -v /path/to/your/videos:/videos chromavue your_video.mp4 --width
 **Windows Command Prompt:**
 ```cmd
 # Basic usage
-docker run --rm -v C:\Users\YourName\Videos:/videos chromavue my_video.mp4
+docker run --rm -v C:\Users\YourName\Videos:/videos shmdtt/chroma-vue my_video.mp4
 
 # With custom options
-docker run --rm -v C:\Users\YourName\Videos:/videos chromavue my_video.mp4 --width 2000 --height 600
+docker run --rm -v C:\Users\YourName\Videos:/videos shmdtt/chroma-vue my_video.mp4 --width 2000 --height 600
 
 # Using current directory (if video is in current folder)
-docker run --rm -v %cd%:/videos chromavue my_video.mp4
+docker run --rm -v %cd%:/videos shmdtt/chroma-vue my_video.mp4
 ```
 
 **Windows PowerShell:**
 ```powershell
 # Basic usage
-docker run --rm -v C:\Users\YourName\Videos:/videos chromavue my_video.mp4
+docker run --rm -v C:\Users\YourName\Videos:/videos shmdtt/chroma-vue my_video.mp4
 
 # With custom options
-docker run --rm -v C:\Users\YourName\Videos:/videos chromavue "my video with spaces.mp4" --width 2000
+docker run --rm -v C:\Users\YourName\Videos:/videos shmdtt/chroma-vue "my video with spaces.mp4" --width 2000
 
 # Using current directory
-docker run --rm -v ${PWD}:/videos chromavue my_video.mp4
+docker run --rm -v ${PWD}:/videos shmdtt/chroma-vue my_video.mp4
 ```
 
 **macOS/Linux:**
 ```bash
 # Basic usage
-docker run --rm -v ~/Videos:/videos chromavue my_video.mp4
+docker run --rm -v ~/Videos:/videos shmdtt/chroma-vue my_video.mp4
 
 # With custom options
-docker run --rm -v ~/Videos:/videos chromavue my_video.mp4 --width 4000 --height 1000
+docker run --rm -v ~/Videos:/videos shmdtt/chroma-vue my_video.mp4 --width 4000 --height 1000
 
 # Using current directory
-docker run --rm -v $(pwd):/videos chromavue my_video.mp4
+docker run --rm -v $(pwd):/videos shmdtt/chroma-vue my_video.mp4
 ```
 
 ## Common Docker Commands
@@ -115,24 +125,27 @@ docker run --rm -v %cd%:/videos shmdtt/chroma-vue "your_video.mp4" --workers 4
 docker run --rm -v ${PWD}:/videos shmdtt/chroma-vue "your_video.mp4" --workers 4
 ```
 
-# Building the Docker Image
+# Building the Docker Image Yourself
 
-If you want to build the image yourself:
+If you want to build the image yourself instead of using the pre-built one:
+
+```bash
+# Clone the repository
 git clone <repository-url>
 cd chroma-vue
 
-## Build the Docker image
+# Build the Docker image
 docker build -t chromavue .
 
-## Run with your video (Linux/macOS)
+# Run with your video (Linux/macOS)
 docker run --rm -v $(pwd):/videos chromavue your_video.mp4
 
-## Run with your video (Windows Command Prompt)
+# Run with your video (Windows Command Prompt)
 docker run --rm -v %cd%:/videos chromavue your_video.mp4
 
-## Run with your video (Windows PowerShell)
+# Run with your video (Windows PowerShell)
 docker run --rm -v ${PWD}:/videos chromavue your_video.mp4
-
+```
 
 ### Docker Volume Mounting
 
@@ -145,20 +158,20 @@ The Docker container expects videos to be mounted to `/videos` inside the contai
 **Examples:**
 ```bash
 # Linux/macOS: If your video is in /home/user/Downloads/
-docker run --rm -v /home/user/Downloads:/videos chromavue video.mp4
+docker run --rm -v /home/user/Downloads:/videos shmdtt/chroma-vue video.mp4
 
 # Windows Command Prompt: If your video is in C:\Users\John\Desktop\
-docker run --rm -v C:\Users\John\Desktop:/videos chromavue video.mp4
+docker run --rm -v C:\Users\John\Desktop:/videos shmdtt/chroma-vue video.mp4
 
 # Windows PowerShell: Using current directory
-docker run --rm -v ${PWD}:/videos chromavue video.mp4
+docker run --rm -v ${PWD}:/videos shmdtt/chroma-vue video.mp4
 
 # Process multiple videos with different settings
-docker run --rm -v ~/MyVideos:/videos chromavue video1.mp4 --width 2000
-docker run --rm -v ~/MyVideos:/videos chromavue video2.mp4 --height 600
+docker run --rm -v ~/MyVideos:/videos shmdtt/chroma-vue video1.mp4 --width 2000
+docker run --rm -v ~/MyVideos:/videos shmdtt/chroma-vue video2.mp4 --height 600
 
 # Handle videos with spaces in filename (use quotes)
-docker run --rm -v "C:\My Videos":/videos chromavue "my video file.mp4"
+docker run --rm -v "C:\My Videos":/videos shmdtt/chroma-vue "my video file.mp4"
 ```
 
 ## Local Installation (Alternative)
@@ -287,16 +300,16 @@ sudo usermod -aG docker $USER
 **Volume mounting issues**: Ensure your path is absolute and the directory exists:
 ```bash
 # Linux/macOS: Good - Absolute path
-docker run --rm -v /home/user/Videos:/videos chromavue video.mp4
+docker run --rm -v /home/user/Videos:/videos shmdtt/chroma-vue video.mp4
 
 # Windows Command Prompt: Good - Absolute path
-docker run --rm -v C:\Users\YourName\Videos:/videos chromavue video.mp4
+docker run --rm -v C:\Users\YourName\Videos:/videos shmdtt/chroma-vue video.mp4
 
 # Windows PowerShell: Good - Absolute path  
-docker run --rm -v C:\Users\YourName\Videos:/videos chromavue video.mp4
+docker run --rm -v C:\Users\YourName\Videos:/videos shmdtt/chroma-vue video.mp4
 
 # Bad: Relative path (may not work consistently)
-docker run --rm -v ./Videos:/videos chromavue video.mp4
+docker run --rm -v ./Videos:/videos shmdtt/chroma-vue video.mp4
 ```
 
 **Windows-specific path issues**: 
@@ -307,13 +320,13 @@ docker run --rm -v ./Videos:/videos chromavue video.mp4
 **File not found in container**: Make sure your video file is in the mounted directory:
 ```bash
 # List files in mounted directory (Linux/macOS)
-docker run --rm -v $(pwd):/videos --entrypoint ls chromavue -la /videos
+docker run --rm -v $(pwd):/videos --entrypoint ls shmdtt/chroma-vue -la /videos
 
 # List files in mounted directory (Windows Command Prompt)
-docker run --rm -v %cd%:/videos --entrypoint ls chromavue -la /videos
+docker run --rm -v %cd%:/videos --entrypoint ls shmdtt/chroma-vue -la /videos
 
 # List files in mounted directory (Windows PowerShell)
-docker run --rm -v ${PWD}:/videos --entrypoint ls chromavue -la /videos
+docker run --rm -v ${PWD}:/videos --entrypoint ls shmdtt/chroma-vue -la /videos
 ```
 
 ### General Issues
