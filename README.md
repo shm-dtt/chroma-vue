@@ -8,6 +8,26 @@ I used this [Youtube video](https://www.youtube.com/watch?v=WO2b03Zdu4Q) for a s
 
 Also, there is a sample of the movie "La La Land" as well. (`/sample/La.La.Land.2016.720p_3000_800.png`)
 
+### Movie Examples
+
+Below are examples of color timelines generated from various movies:
+
+| Movie | Color Timeline |
+|-------|----------------|
+| **Blade Runner 2049** | ![Blade Runner 2049](movies/Blade.Runner.2049_3000_800.png) |
+| **Cars** | ![Cars](movies/Cars_3000_800.png) |
+| **Fight Club** | ![Fight Club](movies/Fight.Club_3000_800.png) |
+| **John Wick Chapter 2** | ![John Wick Chapter 2](movies/John.Wick.Chapter.2_3000_800.png) |
+| **John Wick Chapter 3** | ![John Wick Chapter 3](movies/John.Wick.Chapter.3_3000_800.png) |
+| **Mad Max: Fury Road** | ![Mad Max: Fury Road](movies/Mad.Max.Fury.Road_3000_800.png) |
+| **Midsommar** | ![Midsommar](movies/Midsommar_3000_800.png) |
+| **Spider-Man: Into the Spider-Verse** | ![Spider-Man: Into the Spider-Verse](movies/Spider-Man.Into.The.Spider-Verse_3000_800.png) |
+| **The Grand Budapest Hotel** | ![The Grand Budapest Hotel](movies/The.Grand.Budapest.Hotel_3000_800.png) |
+| **The Matrix** | ![The Matrix](movies/The.Matrix_3000_800.png) |
+| **Tron: Legacy** | ![Tron: Legacy](movies/Tron.Legacy_3000_800.png) |
+
+*All examples were generated at 3000x800 resolution using the default settings.*
+
 ## Features
 
 - **High Performance**: Utilizes multiprocessing to maximize CPU usage
