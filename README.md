@@ -18,7 +18,7 @@ A fast video color timeline generator that extracts the average color from each 
 |:---:|:---:|:---:|
 | **Spider-Man: Into the Spider-Verse** | **The Grand Budapest Hotel** | **The Matrix** |
 
-| ![Tron: Legacy](movies/Tron.Legacy_3000_800.png) | ![La La Land](sample/La.La.Land.2016.720p_3000_800.png) | ![Nightcrawler](movies/Nightcrawler_3000_800.png) |
+| ![Tron: Legacy](movies/Tron.Legacy_3000_800.png) | ![La La Land](movies/La.La.Land_3000_800.png) | ![Nightcrawler](movies/Nightcrawler_3000_800.png) |
 |:---:|:---:|:---:|
 | **Tron: Legacy** | **La La Land** | **Nightcrawler** |
 
@@ -155,7 +155,7 @@ python chroma-vue.py your_video.mp4 --width 4000 --height 1000 --workers 8
 
 ## Performance Benchmarks
 
-Tests performed on WSL2 with the following specifications:
+Tests performed on WSL2 with the following specifications for the movie 'La La Land':
 - **CPU**: Intel Core i7-1065G7 @ 1.30GHz (8 logical cores)
 - **RAM**: 16GB total, 8068MB allocated to WSL2
 - **Workers**: 8 processes
